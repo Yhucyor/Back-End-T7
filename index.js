@@ -10,6 +10,10 @@ const port = 3000;
 app.set("views", path.join(__dirname, "views")); //views ở trước không được sửa ./views chính là đường dẫn thiết lập views cho người dùng
 app.set("view engine", "pug"); // Chỉ định cho express engine biết templete engine mà bạn đang dùng 
 
+// Thiết lập kết nối Database
+const database = require('./config/database');
+database.connect();
+
 // Thiết lập các thư mục tĩnh cho dự án 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -31,3 +35,4 @@ app.listen(port, () => {
 //8. Thêm thư viện Dotenv và ẩn dữ liệu nhạy cảm
 //9. Thực hiện tách theo mô hình MVC 
 //10. Thực hiện tách theo mô hình Model 
+//11. Thêm thư mục config là cấu hình cơ sở dữ liệu DataBase

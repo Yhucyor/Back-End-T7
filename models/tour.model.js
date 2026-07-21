@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE);
 
 const Tour = mongoose.model("Tour", {
     name: String, // Trong bản ghi có phần nào thì trong này phải có phần đó 
