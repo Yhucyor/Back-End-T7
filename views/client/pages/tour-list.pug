@@ -4,4 +4,6 @@ block title
     title #{titlePage}
 block main
     h1 Danh sách Tour
-    div #{tourList}
+    ul
+        each item of tourList 
+            li #{item.name} and #{item.vehicle}
