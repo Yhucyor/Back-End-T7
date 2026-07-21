@@ -1,9 +1,23 @@
-extends ../layouts/default.pug 
+extends ../layouts/default.pug
+include ../mixins/product-item.pug
+include ../mixins/box-breadcrumb.pug
 
-block title
-    title #{titlePage}
 block main
-    h1 Danh sách Tour
-    ul
-        each item of tourList 
-            li #{item.name} and #{item.vehicle}
+  // Breadcrumb
+  -
+    var breadcrumb = {
+        image: "/assets/images/banner-6.jpg",
+        title: "Tour Nước Ngoài",
+        list: [
+        {
+            link: "/",
+            title: "Trang Chủ"
+        },
+        {
+            link: "/tours",
+            title: "Tour Nước Ngoài"
+        }
+        ]
+    }
+  +box-breadcrumb(breadcrumb)
+  // End Breadcrumb
