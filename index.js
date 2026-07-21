@@ -1,14 +1,9 @@
 const express = require('express');
 const path = require('path'); // Thiết lập đường dẫn 
-const mongoose = require('mongoose');
+
 require('dotenv').config(); // Thêm thư viện DotENV để ẩn dữ liệu nhạy cảm 
 
-//Kết nối dữ liệu với MongoDB 
-mongoose.connect(process.env.DATABASE);
-const Tour = mongoose.model("Tour", {
-    name: String, // Trong bản ghi có phần nào thì trong này phải có phần đó 
-    vehicle: String
-}); 
+const Tour = require('./models/tour.model');
 const app = express();
 const port = 3000; 
 
@@ -52,3 +47,6 @@ app.listen(port, () => {
 //5. Phân tách các Pug thành các thành phần với nhau 
 //6. Thêm các file tĩnh vào trong dự án như css các kiểu thêm 1 thư mục là Public 
 //7. Thiết lập kết nối với Database MongoDB truy cập trang Mongoose để có thể đọc tài liệu 
+//8. Thêm thư viện Dotenv và ẩn dữ liệu nhạy cảm
+//9. Thực hiện tách theo mô hình MVC 
+//10. Thực hiện tách theo mô hình Model 
