@@ -13,11 +13,19 @@ app.set("view engine", "pug");
 //     res.send("Hello Trang chủ");
 // })
 app.get('/', (req, res) => {
-    res.render("client/pages/home.pug");
+    res.render("client/pages/home.pug", {
+        titlePage: "Trang chủ" // Đây là 1 đối tượng 
+    });
 })
 
+// app.get('/tours', (req, res) => {
+//     res.send("Trang Tour du lịch"); 
+// })
 app.get('/tours', (req, res) => {
-    res.send("Trang Tour du lịch"); 
+    res.render("client/pages/tour-list.pug", {
+        titlePage: "Tour Du Lịch",
+        tourList: "Danh sach Tour Du Lịch"
+    })
 })
 
 app.listen(port, () => {
