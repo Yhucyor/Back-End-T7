@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path'); // Thiết lập đường dẫn 
 
 require('dotenv').config(); // Thêm thư viện DotENV để ẩn dữ liệu nhạy cảm 
+const variableConfig = require('./config/variable');
 
 const app = express();
 const port = 3000; 
@@ -17,12 +18,14 @@ database.connect();
 // Thiết lập các thư mục tĩnh cho dự án 
 app.use(express.static(path.join(__dirname, "public")));
 
+// Tạo biến toàn cục trong file PUG
+app.locals.pathAdmin = variableConfig.pathAdmin;
 // Thiết lập Route 
 const adminRoutes = require('./routes/admin/index.route');
 const routeClient = require('./routes/client/index.route');
 
 // app.get('/', routeClient); Sử dụng cái này thì bị lỗi 
-app.use('/admin', adminRoutes);
+app.use(`/${variableConfig.pathAdmin}`, adminRoutes);
 app.use('/', routeClient);
 
 app.listen(port, () => {
