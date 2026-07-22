@@ -40,3 +40,4 @@ app.listen(port, () => {
 //9. Thực hiện tách theo mô hình MVC 
 //10. Thực hiện tách theo mô hình Model 
 //11. Thêm thư mục config là cấu hình cơ sở dữ liệu DataBase
+// taskkill /F /IM node.exe
