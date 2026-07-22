@@ -18,9 +18,13 @@ database.connect();
 app.use(express.static(path.join(__dirname, "public")));
 
 // Thiết lập Route 
+const adminRoutes = require('./routes/admin/index.route');
 const routeClient = require('./routes/client/index.route');
+
 // app.get('/', routeClient); Sử dụng cái này thì bị lỗi 
+app.use('/admin', adminRoutes);
 app.use('/', routeClient);
+
 app.listen(port, () => {
     console.log("Đã nhận tính hiệu từ Web");
 })
