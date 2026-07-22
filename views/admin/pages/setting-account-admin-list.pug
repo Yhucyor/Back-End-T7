@@ -46,7 +46,7 @@ block main
         <i class="fa-solid fa-magnifying-glass"></i>
         input(type="text" placeholder="Tìm kiếm")
       .inner-button-create
-        button + Tạo mới
+        a(href=`/${pathAdmin}/setting/account-admin/create`) + Tạo mới
   //- End Section 5
 
   //- Section 6
@@ -71,7 +71,7 @@ block main
               input(type="checkbox" class="inner-check")
             td Lê Văn A
             td(class="inner-center")
-              img(src="assets/images/avatar.jpg" class="inner-avatar")
+              img(src="/admin/assets/images/avatar.jpg" class="inner-avatar")
             td levana@gmail.com
             td 01234567890
             td Quản trị viên
