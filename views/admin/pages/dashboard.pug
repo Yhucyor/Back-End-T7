@@ -1,5 +1,6 @@
 extends ../layouts/default.pug
-
+block title
+  title #{pageTitle}
 block main
   h1.box-title Tổng quan
 
@@ -7,7 +8,7 @@ block main
   .section-1
     .inner-item
       .inner-icon
-        img(src="admin/assets/images/section-1-icon-1.svg")
+        img(src="/admin/assets/images/section-1-icon-1.svg")
       .inner-content
         .inner-title Người dùng
         .inner-number 1.200
