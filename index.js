@@ -49,3 +49,4 @@ app.listen(port, () => {
 // taskkill /F /IM node.exe
 //12. Thêm tính năng đăng kí và kết nối DB
 //13. BCrypt để mã hóa dữ liệu 
+//14. Thêm thư viện Joi để Validate dữ liệu đầu vào
