@@ -1,4 +1,5 @@
 const AccountAdmin = require("../../models/account-admin.model");
+const bcrypt = require('bcryptjs');
 
 module.exports.login = async (req, res) => {
   res.render('admin/pages/login', {
@@ -13,7 +14,7 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.registerPost = async (req, res) => {
-  const {fullName, email, otpPassword} = req.body;
+  const {fullName, email, password} = req.body;
   console.log(req.body);
   const existAccount = await AccountAdmin.findOne({
     email: email
@@ -26,10 +27,16 @@ module.exports.registerPost = async (req, res) => {
     })
     return;
   }
+
+  // Mã hóa dữ liệu với Bcrypt 
+  const salt = await bcrypt.genSalt(10); // Tạo ra chuổi ngẫu nhiên 
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Store hash in your password DB
   const newAcount = new AccountAdmin({
     fullName: fullName, 
     email: email, 
-    password: otpPassword, 
+    password: hashedPassword, 
     status: "initial"
   })
 
