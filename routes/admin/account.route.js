@@ -3,6 +3,8 @@ const accountController = require('../../controller/admin/account.controller')
 
 router.get('/login', accountController.login)
 router.get('/register', accountController.register)
+router.post('/register', accountController.registerPost)
+router.get('/register-initial', accountController.registerPostInitial)
 router.get('/forgot-password', accountController.forgotPassword);
 router.get('/otp-password', accountController.otpPassword);
 router.get('/reset-password', accountController.resetPassword);

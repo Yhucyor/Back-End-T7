@@ -24,6 +24,9 @@ app.locals.pathAdmin = variableConfig.pathAdmin;
 const adminRoutes = require('./routes/admin/index.route');
 const routeClient = require('./routes/client/index.route');
 
+// Cho phép gửi dữ liệu dạng json
+app.use(express.json());
+
 // app.get('/', routeClient); Sử dụng cái này thì bị lỗi 
 app.use(`/${variableConfig.pathAdmin}`, adminRoutes);
 app.use('/', routeClient);

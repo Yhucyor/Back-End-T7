@@ -1,3 +1,5 @@
+const AccountAdmin = require("../../models/account-admin.model");
+
 module.exports.login = async (req, res) => {
   res.render('admin/pages/login', {
     pageTitle: "Đăng nhập"
@@ -10,6 +12,40 @@ module.exports.register = async (req, res) => {
   })
 }
 
+module.exports.registerPost = async (req, res) => {
+  const {fullName, email, otpPassword} = req.body;
+  console.log(req.body);
+  const existAccount = await AccountAdmin.findOne({
+    email: email
+  })
+
+  if (existAccount){
+    res.json({
+      code: "error",
+      message: "Email đã tồn tại trong hệ thống!"
+    })
+    return;
+  }
+  const newAcount = new AccountAdmin({
+    fullName: fullName, 
+    email: email, 
+    password: otpPassword, 
+    status: "initial"
+  })
+
+  // Lưu vào Database
+  await newAcount.save();
+  res.json({
+    code: "success",
+    message: "Đăng ký tài khoản thành công"
+  });
+}
+
+module.exports.registerPostInitial = async (req, res) => {
+  res.render('admin/pages/register-initial', {
+    pageTitle: "Tài khoản đã được khởi tạo"
+  })
+}
 module.exports.forgotPassword = async (req, res) => {
   res.render('admin/pages/forgot-password', {
     pageTitle: "Quên mật khẩu"

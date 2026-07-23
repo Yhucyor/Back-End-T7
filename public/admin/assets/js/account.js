@@ -40,14 +40,12 @@ if(loginForm) {
         errorMessage: 'Mật khẩu phải chứa ít nhất một ký tự đặc biệt!',
       },
     ])
-    .onSuccess((event) => {
+    .onSuccess((event) => { // Quan tâm đến dữ liệu ở phần này 
       const email = event.target.email.value;
       const password = event.target.password.value;
       const rememberPassword = event.target.rememberPassword.checked;
 
-      console.log(email);
-      console.log(password);
-      console.log(rememberPassword);
+
     })
   ;
 }
@@ -122,9 +120,29 @@ if(registerForm) {
       const email = event.target.email.value;
       const password = event.target.password.value;
 
-      console.log(fullName);
-      console.log(email);
-      console.log(password);
+      const dataFinal = {
+        fullName: fullName,
+        email: email,
+        password: password
+      }
+
+      fetch ('/admin123/account/register', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataFinal)
+      })
+        .then(res => res.json())
+        .then(data => {
+          if(data.code == "error"){
+            alert(data.message);
+          }
+
+          if(data.cod == "success"){
+            window.location.href = '/admin/account/register-initial';
+          }
+        })
     })
   ;
 }
