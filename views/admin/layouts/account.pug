@@ -4,6 +4,8 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{pageTitle}
     link(rel="stylesheet", href="/admin/assets/css/style.css")
+    script.
+      const pathAmin = #{pathAdmin} // Mẹo thủ thuật để lấy 1 dữ liệu từ file Js vào file Pug rồi từ Pug vào Js
   body
     .page-account
       block main
