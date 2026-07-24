@@ -75,7 +75,7 @@ module.exports.loginPost = (req, res, next) => {
             }),
         password: Joi.string()
             .required()
-            .min(8)
+            .min(8) 
             .custom((value, helpers) => {
                 if(!/[A-Z]/.test(value)){
                     return helpers.error('password.uppercase');

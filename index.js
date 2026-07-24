@@ -4,6 +4,8 @@ const path = require('path'); // Thiết lập đường dẫn
 require('dotenv').config(); // Thêm thư viện DotENV để ẩn dữ liệu nhạy cảm 
 const variableConfig = require('./config/variable');
 
+const cookieParser = require('cookie-parser')
+
 const app = express();
 const port = 3000; 
 
@@ -20,6 +22,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Tạo biến toàn cục trong file PUG
 app.locals.pathAdmin = variableConfig.pathAdmin;
+
+// Tạo biến toàn cục trong file BackEnd 
+global.pathAdmin = variableConfig.pathAdmin;
+
+// Sử dụng Cookie-Parser
+app.use(cookieParser());
 // Thiết lập Route 
 const adminRoutes = require('./routes/admin/index.route');
 const routeClient = require('./routes/client/index.route');
@@ -50,3 +58,8 @@ app.listen(port, () => {
 //12. Thêm tính năng đăng kí và kết nối DB
 //13. BCrypt để mã hóa dữ liệu 
 //14. Thêm thư viện Joi để Validate dữ liệu đầu vào
+//15. Thêm tính năng đăng nhập compare bằng bcrypt
+//16. Thêm thư viện jsonwebtoken để tăng bảo mật 
+//17. Tính năng đăng nhập và đăng xuất Token
+//18. Tạo đường dẫn bảo mật - cần thư viện Cookie Parser
+// bên Backend có thể lấy mà không cần thư viện nhưng phải phân tách ra nên sử dụng thư viện cho nhanh 
