@@ -102,6 +102,7 @@ module.exports.loginPost = (req, res, next) => {
                 "password.number": "Mật khẩu phải chứa ít nhất một chữ số!", 
                 "password.special": "Mật khẩu phải chứa ít nhất một kí tự đặc biệt!"
             }),
+        rememberPassword: Joi.boolean(),
     });
     // Next sẽ làm hàm để đi sang hàm tiếp theo 
     const {error} = schema.validate(req.body);

@@ -1,3 +1,4 @@
+const router = require("express").Router();
 const express = require('express');
 const path = require('path'); // Thiết lập đường dẫn 
 
@@ -5,6 +6,12 @@ require('dotenv').config(); // Thêm thư viện DotENV để ẩn dữ liệu n
 const variableConfig = require('./config/variable');
 
 const cookieParser = require('cookie-parser')
+
+// Để trình duyệt không lưu vào bộ nhớ đệm 
+router.use((req, res) => {
+    res.setHeader('Cache-Control', 'no-store')
+    next();
+})
 
 const app = express();
 const port = 3000; 
@@ -63,3 +70,4 @@ app.listen(port, () => {
 //17. Tính năng đăng nhập và đăng xuất Token
 //18. Tạo đường dẫn bảo mật - cần thư viện Cookie Parser
 // bên Backend có thể lấy mà không cần thư viện nhưng phải phân tách ra nên sử dụng thư viện cho nhanh 
+//19. Tính năng nhớ mật khẩu 

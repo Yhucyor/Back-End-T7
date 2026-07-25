@@ -9,7 +9,7 @@ module.exports.login = async (req, res) => {
 };
 
 module.exports.loginPost = async (req, res) => {
-  const {email, password} = req.body;
+  const {email, password, rememberPassword} = req.body;
 
   const existAccount = await AccountAdmin.findOne({
     email: email
@@ -51,13 +51,13 @@ module.exports.loginPost = async (req, res) => {
     },
     process.env.JWT_SECURITY, // chuỗi bảo mật để mã hóa thành token 
     {
-      expiresIn: '1d' // Token có thời hạn 1 ngày 
+      expiresIn: rememberPassword ? '30d' : '1d' // Token có thời hạn 1 ngày 
     }
   )
 
   // Lưu Token vào cookie 
   res.cookie("token", token, {
-    maxAge: 24 * 60 * 60 * 1000, // Token hien luc 
+    maxAge: rememberPassword? (30 * 24 * 60 * 60 * 1000) : (24 * 60 * 60 * 1000), // Token hien luc 
     httpOnly: true,
     sameSite: "strict" // Đúng tên miền 
   })
