@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const accountController = require('../../controller/admin/account.controller')
 const accountValidate = require('../../validates/account.validate')
+// Ham trung gian 
+const authMiddleware = require('../../middlewares/admin/auth.middleware')
 
 router.get('/login', accountController.login)
 router.get('/register', accountController.register)
@@ -15,6 +17,7 @@ router.get('/otp-password', accountController.otpPassword);
 router.post('/otp-password', accountController.otpPasswordPost);
 
 router.get('/reset-password', accountController.resetPassword);
+router.post('/reset-password', authMiddleware.verifyToken, accountController.resetPasswordPost);
 
 router.post('/logout', accountValidate.loginPost, accountController.logoutPost) 
 
