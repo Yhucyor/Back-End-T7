@@ -71,3 +71,5 @@ app.listen(port, () => {
 //18. Tạo đường dẫn bảo mật - cần thư viện Cookie Parser
 // bên Backend có thể lấy mà không cần thư viện nhưng phải phân tách ra nên sử dụng thư viện cho nhanh 
 //19. Tính năng nhớ mật khẩu 
+//20. Thêm Module Helper để tạo các hàm bổ trợ (tạo OTP,...)
+//21. Nodemailer để gửi mã OTP thư viện 

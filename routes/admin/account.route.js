@@ -9,6 +9,8 @@ router.post('/register', accountValidate.registerPost, accountController.registe
 // Chạy hàm trước trước khi chạy hàm accountController 
 router.get('/register-initial', accountController.registerPostInitial)
 router.get('/forgot-password', accountController.forgotPassword);
+// OTP 
+router.post('/forgot-password', accountController.forgotPasswordPost);
 router.get('/otp-password', accountController.otpPassword);
 router.get('/reset-password', accountController.resetPassword);
 
