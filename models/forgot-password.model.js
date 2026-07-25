@@ -4,7 +4,7 @@ const scheme = new mongoose.Schema(
     {
         email: String,
         otp: String,
-        expireAt: {
+        expireAt: { // Trường đặc biệt không thể thay đổi 
             type: Date,
             expires: 0  
         }
