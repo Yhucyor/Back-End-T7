@@ -24,8 +24,9 @@ module.exports.verifyToken = async (req, res, next) => {
             res.redirect(`/${pathAdmin}/account/login`);
             return;
         }
-        
+        // Chỉ các file Js bên Controller lấy được 
         req.account = existAccount;
+        //Những file Pug sẽ lấy được 
         res.locals.account = existAccount;
         next();
     } catch (error) {
