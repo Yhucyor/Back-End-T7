@@ -76,3 +76,4 @@ app.listen(port, () => {
 //22. Thêm thư viện Multer để lấy các file user up lên 
 //23. Thêm thư viện cloudinary để upload ảnh
 //24. Multer storage cloud - để kết nối mUlter storage với cloudinary 
+//25. Thêm Slug - tải thư viện mongoose slug updater 
